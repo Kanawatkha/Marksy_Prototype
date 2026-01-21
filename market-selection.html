@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เลือกตลาด - Marksy</title>
+    <link rel="icon" href="assets/img/Logo_Marksy.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand bg-white shadow-sm sticky-top">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <a href="index.html" class="btn btn-light rounded-circle me-2 text-secondary border">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <span class="navbar-brand mb-0 h1 text-success fw-bold font-heading">
+                    <i class="fa-solid fa-store me-2"></i>Marksy
+                </span>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="bg-light rounded-pill px-3 py-1 border d-flex align-items-center">
+                    <i class="fa-solid fa-layer-group text-primary me-2"></i>
+                    <small class="text-secondary" id="role-display">กำลังโหลด...</small>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="text-center mb-5 animate-fade-in">
+            <h2 class="fw-bold font-heading mb-2">เลือกตลาดที่ต้องการ</h2>
+            <p class="text-muted" id="instruction-text">กรุณาเลือกตลาดเพื่อดูข้อมูล</p>
+        </div>
+
+        <div class="row g-4" id="market-list-container">
+            <div class="col-12 text-center py-5">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/data.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. ตรวจสอบ Role จาก URL Parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const role = urlParams.get('role') || 'renter'; // ค่า default คือ renter
+
+            // 2. ปรับแต่งหน้าตาตาม Role
+            const roleDisplay = document.getElementById('role-display');
+            const instructionText = document.getElementById('instruction-text');
+
+            let btnText = 'เลือกจองที่นี่';
+            let btnClass = 'btn-success';
+            let targetPage = 'renter-booking.html';
+
+            if (role === 'customer') {
+                roleDisplay.innerText = 'ลูกค้าเดินตลาด';
+                instructionText.innerText = 'เลือกตลาดที่คุณต้องการไปเดินช้อปปิ้ง';
+                btnText = 'เข้าชมตลาด';
+                btnClass = 'btn-warning text-dark';
+                targetPage = 'customer-view.html'; // หน้าใหม่ที่จะสร้างใน Step 11
+            } else {
+                roleDisplay.innerText = 'ร้านค้า / ผู้เช่า';
+                instructionText.innerText = 'เลือกตลาดที่ต้องการเช่าพื้นที่ขายของ';
+            }
+
+            // 3. สร้างการ์ดรายการตลาด (Render Markets)
+            const container = document.getElementById('market-list-container');
+            container.innerHTML = ''; // เคลียร์ Loading
+
+            marketsData.forEach(market => {
+                const cardHTML = `
+                    <div class="col-md-6 col-lg-4 animate-fade-in">
+                        <div class="card card-modern h-100 overflow-hidden border-0 shadow-sm">
+                            <div class="position-relative" style="height: 200px;">
+                                <img src="${market.image}" class="w-100 h-100 object-fit-cover" alt="${market.name}"
+                                     onerror="this.src='https://placehold.co/600x400?text=Market+Image'">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-gradient-to-t" 
+                                     style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                                     <span class="badge bg-white text-dark shadow-sm">
+                                        <i class="fa-solid fa-shop me-1"></i> ${market.totalStalls} ล็อก
+                                     </span>
+                                </div>
+                            </div>
+                            <div class="card-body d-flex flex-column p-4">
+                                <h5 class="card-title fw-bold font-heading mb-2">${market.name}</h5>
+                                <p class="text-muted small mb-3 flex-grow-1">
+                                    <i class="fa-solid fa-location-dot me-1 text-danger"></i> ${market.location}
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                                    <small class="text-secondary"><i class="fa-regular fa-clock"></i> ${market.openHours}</small>
+                                    <a href="${targetPage}?id=${market.id}" class="btn btn-sm ${btnClass} rounded-pill px-4 shadow-sm">
+                                        ${btnText} <i class="fa-solid fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+        });
+    </script>
+</body>
+
+</html>

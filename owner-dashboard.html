@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจัดการตลาด - Marksy Owner</title>
+    <link rel="icon" href="assets/img/Logo_Marksy.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark shadow-sm sticky-top">
+        <div class="container-fluid px-4">
+            <a href="index.html" class="navbar-brand fw-bold font-heading">
+                <i class="fa-solid fa-chart-pie me-2 text-success"></i>Marksy Manager
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <div class="text-white text-end d-none d-md-block">
+                    <div class="fw-bold small">Admin Market</div>
+                    <div class="text-white-50" style="font-size: 0.75rem;">เจ้าของตลาด</div>
+                </div>
+                <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white"
+                    style="width: 35px; height: 35px;">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <a href="index.html" class="btn btn-outline-light btn-sm rounded-pill ms-2">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4 px-4">
+        <div class="row g-4">
+
+            <div class="col-lg-2 d-none d-lg-block">
+                <div class="card card-modern border-0 h-100">
+                    <div class="card-body p-2">
+                        <div class="list-group list-group-flush sidebar-menu">
+                            <a href="#" class="list-group-item list-group-item-action active-menu py-3">
+                                <i class="fa-solid fa-map me-2"></i> ผังตลาด & อนุมัติ
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action py-3"
+                                onclick="Swal.fire('Coming Soon')">
+                                <i class="fa-solid fa-file-invoice-dollar me-2"></i> รายงานการเงิน
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action py-3"
+                                onclick="Swal.fire('Coming Soon')">
+                                <i class="fa-solid fa-users me-2"></i> รายชื่อผู้เช่า
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action py-3"
+                                onclick="Swal.fire('Coming Soon')">
+                                <i class="fa-solid fa-gear me-2"></i> ตั้งค่าตลาด
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-10">
+
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <div class="card card-modern border-0 bg-white p-3 h-100 border-start border-4 border-success">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <p class="text-muted small mb-1">รายได้รวม (เดือนนี้)</p>
+                                    <h3 class="fw-bold text-dark mb-0" id="stat-income">0 ฿</h3>
+                                </div>
+                                <div class="bg-success bg-opacity-10 text-success rounded p-2">
+                                    <i class="fa-solid fa-wallet fa-lg"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-modern border-0 bg-white p-3 h-100 border-start border-4 border-warning">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <p class="text-muted small mb-1">รออนุมัติ (Pending)</p>
+                                    <h3 class="fw-bold text-dark mb-0" id="stat-pending">0 รายการ</h3>
+                                </div>
+                                <div class="bg-warning bg-opacity-10 text-warning rounded p-2">
+                                    <i class="fa-solid fa-clock fa-lg"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-modern border-0 bg-white p-3 h-100 border-start border-4 border-danger">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <p class="text-muted small mb-1">พื้นที่เช่าแล้ว</p>
+                                    <h3 class="fw-bold text-dark mb-0" id="stat-occupancy">0%</h3>
+                                </div>
+                                <div class="bg-danger bg-opacity-10 text-danger rounded p-2">
+                                    <i class="fa-solid fa-store fa-lg"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-modern border-0 shadow-sm">
+                    <div class="card-header bg-white py-3 border-0 d-flex justify-content-between align-items-center">
+                        <h5 class="fw-bold mb-0 font-heading"><i
+                                class="fa-solid fa-layer-group me-2 text-primary"></i>จัดการผังตลาด</h5>
+                        <div class="d-flex gap-2 text-small">
+                            <span class="badge bg-warning text-dark border"><i class="fa-solid fa-circle me-1"></i>
+                                รออนุมัติ</span>
+                            <span class="badge bg-danger"><i class="fa-solid fa-circle me-1"></i> จองแล้ว</span>
+                            <span class="badge bg-success"><i class="fa-solid fa-circle me-1"></i> ว่าง</span>
+                        </div>
+                    </div>
+                    <div class="card-body bg-light p-0 overflow-hidden">
+
+                        <div class="market-map-wrapper rounded-0 border-0 shadow-none">
+                            <div class="map-road">ถ.นนทบุรี (สนามบินน้ำ)</div>
+
+                            <div class="market-layout">
+                                <div class="top-area">
+                                    <div class="block-a29">A-29</div>
+                                    <div class="tonsak-1">ลานต้นสัก 1</div>
+                                </div>
+
+                                <div class="left-column">
+                                    <div id="stall-a01" class="zone-box zone-a-style">A-01</div>
+                                    <div id="stall-a02" class="zone-box zone-a-style">A-02</div>
+                                    <div id="stall-a03" class="zone-box zone-a-style">A-03</div>
+                                    <div id="stall-a04" class="zone-box zone-a-style">A-04</div>
+                                    <div id="stall-a05" class="zone-box zone-a-style">A-05</div>
+                                </div>
+
+                                <div class="center-column">
+                                    <div class="grid-zone-b">
+                                        <div class="zone-label">B - ZONE</div>
+                                        <div id="stall-b01" class="zone-box zone-b-style">B1</div>
+                                        <div id="stall-b02" class="zone-box zone-b-style">B2</div>
+                                        <div id="stall-b03" class="zone-box zone-b-style">B3</div>
+                                        <div id="stall-b04" class="zone-box zone-b-style">B4</div>
+                                        <div id="stall-b05" class="zone-box zone-b-style">B5</div>
+                                        <div id="stall-b06" class="zone-box zone-b-style">B6</div>
+                                        <div id="stall-b07" class="zone-box zone-b-style">B7</div>
+                                        <div id="stall-b08" class="zone-box zone-b-style">B8</div>
+                                        <div id="stall-b09" class="zone-box zone-b-style">B9</div>
+                                        <div id="stall-b10" class="zone-box zone-b-style">B10</div>
+                                        <div id="stall-b11" class="zone-box zone-b-style">B11</div>
+                                        <div id="stall-b12" class="zone-box zone-b-style">B12</div>
+                                    </div>
+
+                                    <div class="grid-zone-m">
+                                        <div class="zone-label" style="background:#e8f5e9; color:#2e7d32;">M - ZONE
+                                        </div>
+                                        <div id="stall-m01" class="zone-box zone-m-style">M1</div>
+                                        <div id="stall-m02" class="zone-box zone-m-style">M2</div>
+                                        <div id="stall-m03" class="zone-box zone-m-style">M3</div>
+                                        <div id="stall-m04" class="zone-box zone-m-style">M4</div>
+                                        <div id="stall-m05" class="zone-box zone-m-style">M5</div>
+                                        <div id="stall-m06" class="zone-box zone-m-style">M6</div>
+                                        <div id="stall-m07" class="zone-box zone-m-style">M7</div>
+                                        <div id="stall-m08" class="zone-box zone-m-style">M8</div>
+                                        <div id="stall-m09" class="zone-box zone-m-style">M9</div>
+                                        <div id="stall-m10" class="zone-box zone-m-style">M10</div>
+                                        <div id="stall-m11" class="zone-box zone-m-style">M11</div>
+                                        <div id="stall-m12" class="zone-box zone-m-style">M12</div>
+                                        <div id="stall-m13" class="zone-box zone-m-style">M13</div>
+                                        <div id="stall-m14" class="zone-box zone-m-style">M14</div>
+                                        <div id="stall-m15" class="zone-box zone-m-style">M15</div>
+                                    </div>
+                                </div>
+
+                                <div class="right-column">
+                                    <div class="block-a24">A-24</div>
+                                    <div class="zone-box zone-g-style" style="height:60px;">G-ZONE</div>
+                                    <div class="zone-orange text-center text-white p-1 rounded small">ลานต้นสัก 3</div>
+                                </div>
+
+                                <div class="bottom-row">
+                                    <div id="stall-a07" class="zone-box zone-a-style">A-07</div>
+                                    <div id="stall-a08" class="zone-box zone-a-style">A-08</div>
+                                    <div id="stall-a09" class="zone-box zone-a-style">A-09</div>
+                                    <div id="stall-a10" class="zone-box zone-a-style">A-10</div>
+                                    <div id="stall-a11" class="zone-box zone-a-style">A-11</div>
+                                    <div id="stall-a12" class="zone-box zone-a-style">A-12</div>
+                                </div>
+                            </div>
+
+                            <div class="facilities-layer">
+                                <div class="ca-zone">CA ZONE</div>
+                                <div class="parking-lot">
+                                    <i class="fa-solid fa-car"></i> ลานจอดรถ
+                                </div>
+                                <div class="office-zone">สนง.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/owner.js"></script>
+</body>
+
+</html>

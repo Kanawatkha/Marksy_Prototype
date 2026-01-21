@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จองพื้นที่ขาย - Marksy</title>
+    <link rel="icon" href="assets/img/Logo_Marksy.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand bg-white shadow-sm sticky-top">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center">
+                <a href="index.html" class="btn btn-light rounded-circle me-2 text-secondary border">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <span class="navbar-brand mb-0 h1 text-success fw-bold font-heading">
+                    <i class="fa-solid fa-store me-2"></i>Marksy
+                </span>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="bg-light rounded-pill px-3 py-1 border d-flex align-items-center">
+                    <i class="fa-regular fa-user text-success me-2"></i>
+                    <small class="text-secondary">คุณแม่ค้า</small>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+
+        <div class="bg-success text-white py-4 mb-4 rounded-bottom-4 shadow-sm" style="border-radius: 0 0 30px 30px;">
+            <div class="container">
+                <h2 class="font-heading fw-bold mb-1" id="map-market-name">ตลาดนัด 18 คอร์ด ราชพฤกษ์</h2>
+                <p class="opacity-75 small mb-0"><i class="fa-solid fa-location-dot me-1"></i> ราชพฤกษ์-นนทบุรี</p>
+                <div class="d-flex mt-3 gap-2 overflow-auto pb-2">
+                    <span class="badge bg-white text-success bg-opacity-10 border border-white"><i
+                            class="fa-regular fa-clock me-1"></i> 16:00 - 23:00 น.</span>
+                    <span class="badge bg-white text-success bg-opacity-10 border border-white"><i
+                            class="fa-solid fa-car me-1"></i> ที่จอดรถกว้าง</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="font-heading fw-bold mb-0">ผังร้านค้า</h5>
+                <button class="btn btn-sm btn-outline-secondary rounded-pill" onclick="location.reload()">
+                    <i class="fa-solid fa-rotate-right me-1"></i> รีเฟรช
+                </button>
+            </div>
+            <div class="d-flex gap-2 small mb-3 overflow-auto">
+                <div class="d-flex align-items-center"><span class="badge bg-success me-1 rounded-circle p-1"> </span>
+                    ว่าง</div>
+                <div class="d-flex align-items-center"><span class="badge bg-danger me-1 rounded-circle p-1"> </span>
+                    จองแล้ว</div>
+                <div class="d-flex align-items-center"><span class="badge bg-warning text-dark me-1 rounded-circle p-1">
+                    </span> รออนุมัติ</div>
+                <div class="d-flex align-items-center"><span class="badge bg-info me-1 rounded-circle p-1"> </span>
+                    ที่เลือก</div>
+            </div>
+        </div>
+
+        <div class="container overflow-hidden">
+            <div class="market-map-wrapper">
+
+                <div class="map-road">ถ.นนทบุรี (สนามบินน้ำ)</div>
+
+                <div class="market-layout">
+
+                    <div class="top-area">
+                        <div class="block-a29">A-29</div>
+                        <div class="tonsak-1">ลานต้นสัก 1</div>
+                    </div>
+
+                    <div class="left-column">
+                        <div id="stall-a01" class="zone-box zone-a-style">A-01</div>
+                        <div id="stall-a02" class="zone-box zone-a-style">A-02</div>
+                        <div id="stall-a03" class="zone-box zone-a-style">A-03</div>
+                        <div id="stall-a04" class="zone-box zone-a-style">A-04</div>
+                        <div id="stall-a05" class="zone-box zone-a-style">A-05</div>
+                    </div>
+
+                    <div class="center-column">
+                        <div class="grid-zone-b">
+                            <div class="zone-label">B - ZONE (เสื้อผ้า)</div>
+                            <div id="stall-b01" class="zone-box zone-b-style">B1</div>
+                            <div id="stall-b02" class="zone-box zone-b-style">B2</div>
+                            <div id="stall-b03" class="zone-box zone-b-style">B3</div>
+                            <div id="stall-b04" class="zone-box zone-b-style">B4</div>
+                            <div id="stall-b05" class="zone-box zone-b-style">B5</div>
+                            <div id="stall-b06" class="zone-box zone-b-style">B6</div>
+                            <div id="stall-b07" class="zone-box zone-b-style">B7</div>
+                            <div id="stall-b08" class="zone-box zone-b-style">B8</div>
+                            <div id="stall-b09" class="zone-box zone-b-style">B9</div>
+                            <div id="stall-b10" class="zone-box zone-b-style">B10</div>
+                            <div id="stall-b11" class="zone-box zone-b-style">B11</div>
+                            <div id="stall-b12" class="zone-box zone-b-style">B12</div>
+                        </div>
+
+                        <div class="grid-zone-m">
+                            <div class="zone-label" style="background:#e8f5e9; color:#2e7d32;">M - ZONE (อาหาร)</div>
+                            <div id="stall-m01" class="zone-box zone-m-style">M1</div>
+                            <div id="stall-m02" class="zone-box zone-m-style">M2</div>
+                            <div id="stall-m03" class="zone-box zone-m-style">M3</div>
+                            <div id="stall-m04" class="zone-box zone-m-style">M4</div>
+                            <div id="stall-m05" class="zone-box zone-m-style">M5</div>
+                            <div id="stall-m06" class="zone-box zone-m-style">M6</div>
+                            <div id="stall-m07" class="zone-box zone-m-style">M7</div>
+                            <div id="stall-m08" class="zone-box zone-m-style">M8</div>
+                            <div id="stall-m09" class="zone-box zone-m-style">M9</div>
+                            <div id="stall-m10" class="zone-box zone-m-style">M10</div>
+                            <div id="stall-m11" class="zone-box zone-m-style">M11</div>
+                            <div id="stall-m12" class="zone-box zone-m-style">M12</div>
+                            <div id="stall-m13" class="zone-box zone-m-style">M13</div>
+                            <div id="stall-m14" class="zone-box zone-m-style">M14</div>
+                            <div id="stall-m15" class="zone-box zone-m-style">M15</div>
+                        </div>
+                    </div>
+
+                    <div class="right-column">
+                        <div class="block-a24">A-24</div>
+                        <div class="zone-box zone-g-style" style="height:60px;">G-ZONE</div>
+                        <div class="zone-orange text-center text-white p-1 rounded small">ลานต้นสัก 3</div>
+                    </div>
+
+                    <div class="bottom-row">
+                        <div id="stall-a07" class="zone-box zone-a-style">A-07</div>
+                        <div id="stall-a08" class="zone-box zone-a-style">A-08</div>
+                        <div id="stall-a09" class="zone-box zone-a-style">A-09</div>
+                        <div id="stall-a10" class="zone-box zone-a-style">A-10</div>
+                        <div id="stall-a11" class="zone-box zone-a-style">A-11</div>
+                        <div id="stall-a12" class="zone-box zone-a-style">A-12</div>
+                    </div>
+
+                </div>
+                <div class="facilities-layer">
+                    <div class="ca-zone">CA ZONE</div>
+                    <div class="parking-lot">
+                        <i class="fa-solid fa-car"></i> ลานจอดรถ <i class="fa-solid fa-motorcycle"></i>
+                    </div>
+                    <div class="office-zone">สนง.</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <i class="fa-solid fa-map-location-dot"></i> จองพื้นที่
+        </a>
+        <a href="#" class="nav-item"
+            onclick="Swal.fire('Coming Soon', 'ระบบประวัติการจองจะเปิดในเวอร์ชันถัดไป', 'info')">
+            <i class="fa-solid fa-clock-rotate-left"></i> ประวัติ
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-solid fa-user"></i> โปรไฟล์
+        </a>
+    </div>
+
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title font-heading"><i class="fa-solid fa-cart-shopping me-2"></i>รายละเอียดการจอง
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="text-center mb-4">
+                        <div
+                            class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill border border-success mb-2">
+                            <span id="modalStallId" class="fw-bold fs-5">ล็อก A-01</span>
+                        </div>
+                        <h4 id="modalPrice" class="text-dark fw-bold mb-0">300 บ. / วัน</h4>
+                    </div>
+
+                    <div class="card bg-light border-0 p-3 mb-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">ขนาดพื้นที่:</span>
+                            <span id="modalStallSize" class="fw-bold">2.5x2.5 ม.</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">โซนสินค้า:</span>
+                            <span id="modalStallZone" class="fw-bold text-primary">อาหาร</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted">ระยะเวลาเช่า:</span>
+                            <select class="form-select form-select-sm w-50" id="rentDuration">
+                                <option value="daily">รายวัน (1 วัน)</option>
+                                <option value="monthly">รายเดือน (30 วัน)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="paymentSection" class="border-top pt-3">
+                        <h6 class="fw-bold mb-3"><i class="fa-solid fa-qrcode me-2 text-primary"></i>สแกนจ่ายเงิน</h6>
+                        <div class="text-center mb-3">
+                            <img src="assets/img/qr-payment.png" alt="QR Code" class="img-fluid border rounded p-2"
+                                style="max-width: 150px;">
+                            <p class="small text-muted mt-2">ธ.กสิกรไทย 123-4-56789-0<br>บจก. มาร์คซี่ มาร์เก็ต</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">แนบหลักฐานการโอนเงิน</label>
+                            <input type="file" class="form-control" id="slip-upload" accept="image/*">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-light rounded-pill px-4"
+                        data-bs-dismiss="modal">ยกเลิก</button>
+                    <button type="button" class="btn btn-success rounded-pill px-4 shadow-sm"
+                        onclick="confirmPayment()">
+                        <i class="fa-solid fa-check-circle me-2"></i> ยืนยันการจอง
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/renter.js"></script>
+</body>
+
+</html>

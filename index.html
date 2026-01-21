@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksy - ระบบจองพื้นที่ตลาด (Prototype)</title>
+    <link rel="icon" href="assets/img/Logo_Marksy.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* CSS เฉพาะหน้า Home ของ Prototype */
+        .prototype-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: radial-gradient(circle at top right, #e8f5e9, transparent 40%),
+                radial-gradient(circle at bottom left, #e3f2fd, transparent 40%);
+        }
+
+        .role-selector-card {
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 2px solid transparent;
+            height: 100%;
+        }
+
+        .role-selector-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-main);
+            box-shadow: 0 15px 30px rgba(46, 125, 50, 0.15);
+        }
+
+        .role-icon-wrapper {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #f1f8e9;
+            color: var(--primary-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 20px;
+            transition: all 0.3s;
+        }
+
+        .role-selector-card:hover .role-icon-wrapper {
+            background: var(--primary-main);
+            color: white;
+            transform: scale(1.1) rotate(5deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="prototype-hero py-5">
+        <div class="container">
+
+            <div class="text-center mb-5 animate-fade-in">
+                <img src="assets/img/Logo_Marksy.png" alt="Marksy" height="80" class="mb-4">
+                <h1 class="display-5 fw-bold text-dark mb-2">ยินดีต้อนรับสู่ Marksy Prototype</h1>
+                <p class="lead text-muted">กรุณาเลือกบทบาทเพื่อเริ่มทดสอบระบบ</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+
+                <div class="col-md-4">
+                    <a href="market-selection.html?role=renter" class="text-decoration-none text-dark">
+                        <div class="card card-modern role-selector-card p-4 text-center">
+                            <div class="role-icon-wrapper">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">ร้านค้า / ผู้เช่า</h4>
+                            <p class="text-muted small mb-4">
+                                ค้นหาตลาด เลือกทำเลทอง และจองพื้นที่ขายของออนไลน์
+                            </p>
+                            <span class="btn btn-outline-success rounded-pill px-4 w-100">
+                                เข้าสู่ระบบ <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="market-selection.html?role=customer" class="text-decoration-none text-dark">
+                        <div class="card card-modern role-selector-card p-4 text-center">
+                            <div class="role-icon-wrapper bg-warning bg-opacity-10 text-warning">
+                                <i class="fa-solid fa-basket-shopping"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">ลูกค้าเดินตลาด</h4>
+                            <p class="text-muted small mb-4">
+                                ดูแผนผังร้านค้า ค้นหาร้านโปรด และเช็คสินค้าที่ขาย
+                            </p>
+                            <span class="btn btn-outline-warning text-dark rounded-pill px-4 w-100">
+                                เข้าชมตลาด <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="owner-dashboard.html" class="text-decoration-none text-dark">
+                        <div class="card card-modern role-selector-card p-4 text-center">
+                            <div class="role-icon-wrapper bg-primary bg-opacity-10 text-primary">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">เจ้าของตลาด</h4>
+                            <p class="text-muted small mb-4">
+                                จัดการผังตลาด อนุมัติการจอง และดูรายงานรายได้
+                            </p>
+                            <span class="btn btn-outline-primary rounded-pill px-4 w-100">
+                                เข้าสู่ระบบ <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-5 pt-4 text-muted small">
+                <p>© 2026 Marksy Project (Prototype Version)</p>
+                <a href="../marksy-docs/index.html" class="text-success fw-bold text-decoration-none">
+                    <i class="fa-solid fa-book me-1"></i> กลับไปหน้าคู่มือการใช้งาน
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
