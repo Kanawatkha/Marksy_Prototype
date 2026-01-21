@@ -1,0 +1,433 @@
+/* =========================================
+   MARKSY PROTOTYPE (UPGRADED VERSION)
+   Combined Global Styles & Complex Map Engine
+   ========================================= */
+
+/* 1. Import Fonts & Variables */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@300;400;500&display=swap');
+
+:root {
+    /* Theme Colors (นำมาจาก Docs) */
+    --primary-main: #2e7d32;
+    /* เขียว Marksy หลัก */
+    --primary-light: #4caf50;
+    /* เขียวสว่าง */
+    --primary-dark: #1b5e20;
+    /* เขียวเข้ม */
+    --accent-yellow: #ffc107;
+    /* สีเหลือง (รออนุมัติ) */
+    --danger-red: #ef5350;
+    /* สีแดง (จองแล้ว) */
+    --bg-light: #f8f9fa;
+    /* พื้นหลังเทาอ่อน */
+    --text-dark: #2c3e50;
+    --text-muted: #6c757d;
+
+    /* Spacing & Effects */
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 20px rgba(46, 125, 50, 0.15);
+    /* เงาสีเขียวจางๆ */
+    --radius-card: 16px;
+    --radius-btn: 50px;
+}
+
+/* 2. Global Reset & Typography */
+body {
+    font-family: 'Sarabun', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
+    font-family: 'Kanit', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 3. Components (Cards & Buttons) */
+.card-modern {
+    background: white;
+    border-radius: var(--radius-card);
+    border: none;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-main {
+    background: linear-gradient(135deg, var(--primary-main), var(--primary-light));
+    color: white;
+    border: none;
+    border-radius: var(--radius-btn);
+    padding: 10px 24px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-main:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(46, 125, 50, 0.4);
+    color: white;
+}
+
+/* =========================================
+   4. COMPLEX MAP ENGINE (ยกมาจาก Docs)
+   ========================================= */
+
+/* Map Container */
+.market-map-wrapper {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+    /* เพิ่มเงาในเพื่อให้ดูยุบลงไปนิดนึง */
+    overflow-x: auto;
+    position: relative;
+    min-width: 100%;
+    /* ปรับให้เต็มจอ */
+}
+
+/* ถ้าจอเล็กให้ขยายกว้างเพื่อให้ Scroll ได้ */
+@media (max-width: 768px) {
+    .market-layout {
+        min-width: 700px;
+    }
+
+    .map-road {
+        min-width: 700px;
+    }
+}
+
+/* Road Layer */
+.map-road {
+    height: 50px;
+    background-color: #cfd8dc;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #546e7a;
+    font-weight: bold;
+    font-size: 1rem;
+    transform: skewX(-10deg);
+    width: 95%;
+    margin-left: auto;
+}
+
+.map-road::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, #546e7a, #546e7a 10px, transparent 10px, transparent 20px);
+}
+
+/* Main Layout Grid */
+.market-layout {
+    display: grid;
+    grid-template-columns: 70px 1fr 180px;
+    /* ปรับขนาดให้เหมาะกับมือถือมากขึ้น */
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+    padding: 15px;
+    background-color: #f1f8e9;
+    /* พื้นหลังเขียวอ่อนๆ */
+    border-radius: 20px;
+    border: 2px solid #c5e1a5;
+}
+
+/* Common Zone Styles */
+.zone-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.1s, filter 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
+    position: relative;
+}
+
+.zone-box:active {
+    transform: scale(0.95);
+}
+
+/* Zone Colors */
+.zone-a-style {
+    background-color: #8d6e63;
+}
+
+/* น้ำตาล */
+.zone-b-style {
+    background-color: #ec407a;
+}
+
+/* ชมพู */
+.zone-m-style {
+    background-color: #66bb6a;
+}
+
+/* เขียว */
+.zone-g-style {
+    background-color: #ef5350;
+}
+
+/* แดง */
+.zone-orange {
+    background-color: #ffa726;
+}
+
+/* ส้ม */
+
+/* Status Colors (สำหรับ Logic JS) */
+.status-free {
+    background-color: #66bb6a !important;
+    /* เขียว */
+    border: 2px solid #2e7d32;
+}
+
+.status-booked {
+    background-color: #ef5350 !important;
+    /* แดง */
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+.status-pending {
+    background-color: #ffca28 !important;
+    /* เหลือง */
+    color: #333 !important;
+    border: 2px dashed #ff6f00;
+}
+
+.status-selected {
+    background-color: #29b6f6 !important;
+    /* ฟ้า (กำลังเลือก) */
+    border: 3px solid #01579b;
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+/* Layout Specifics */
+.top-area {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 10px;
+}
+
+.block-a29 {
+    width: 150px;
+    height: 80px;
+    background-color: #8d6e63;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.tonsak-1 {
+    flex-grow: 1;
+    background-color: #ffa726;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.left-column .zone-box {
+    height: 50px;
+}
+
+.center-column {
+    background: white;
+    padding: 8px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.grid-zone-b {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 35px);
+    /* ปรับความสูง */
+    gap: 3px;
+}
+
+.grid-zone-m {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 35px);
+    gap: 3px;
+}
+
+.zone-label {
+    grid-column: 1 / -1;
+    font-size: 0.7rem;
+    text-align: center;
+    color: #555;
+    font-weight: bold;
+    background: #eee;
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.block-a24 {
+    height: 120px;
+    background-color: #8d6e63;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.bottom-row {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.bottom-row .zone-box {
+    flex: 1;
+    height: 35px;
+}
+
+/* Facilities Layer */
+.facilities-layer {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    gap: 10px;
+    align-items: end;
+}
+
+.ca-zone,
+.office-zone {
+    background: #0277bd;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.office-zone {
+    background: #546e7a;
+}
+
+.parking-lot {
+    background: #eceff1;
+    height: 60px;
+    border-radius: 8px;
+    border: 2px dashed #b0bec5;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #78909c;
+}
+
+/* =========================================
+   5. Prototype Specifics (Renter Nav & Owner Sidebar)
+   ========================================= */
+
+/* Renter Bottom Navigation (ปรับให้สวยขึ้น) */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    /* โปร่งแสงนิดๆ */
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    border-radius: 20px 20px 0 0;
+}
+
+.nav-item {
+    text-align: center;
+    color: #b0bec5;
+    font-size: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.nav-item.active {
+    color: var(--primary-main);
+    transform: translateY(-2px);
+}
+
+.nav-item i {
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.content-wrapper {
+    padding-bottom: 100px;
+}
+
+/* เผื่อพื้นที่ให้ Bottom Nav */
+
+/* Owner Sidebar (สำหรับ Desktop) */
+.sidebar-menu .list-group-item {
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.sidebar-menu .list-group-item:hover {
+    background-color: #e8f5e9;
+    color: var(--primary-main);
+}
+
+.sidebar-menu .list-group-item.active-menu {
+    background-color: var(--primary-main);
+    color: white;
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+}
